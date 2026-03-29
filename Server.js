@@ -31,4 +31,8 @@ app.use(express.static(path.join(__dirname, "build"), {index: false}))
 
 app.listen(5500, () => {
     console.log("listening on port 5500")
+    const interval = setInterval( async () => {
+        const response = await fetch("https://sstrackerapp.onrender.com/")
+        console.log(await response.text())
+    }, (1000 * 60 * 30))
 })
